@@ -6,9 +6,6 @@ namespace EqualsAlgoritms.UnitTest
     [TestClass]
     public class EqualsWithList_Tests
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+        
     }
 }
