@@ -19,32 +19,44 @@ namespace EqualsAlgoritms.UnitTest
         }
 
         [TestMethod]
-        public void ValidateObjects_WithEqualsMethod_AreEqual()
+        [ExpectedException(typeof(System.Exception))]
+        public void ValidateObjects_WithDefaultEqualsMethod_ExceptionNotEqual()
         {
-            try
-            {
+           
                 
 
                 NoOverriddenEqualsMethodOfClass object1 = new NoOverriddenEqualsMethodOfClass();
                 NoOverriddenEqualsMethodOfClass object2 = new NoOverriddenEqualsMethodOfClass();
 
                 bool obtained = validator.CompareTwoObjectWithSystemEquals(object1, object2);
-                var expected = new NoOverriddenEqualsMethodOfClass();
-                Assert.AreEqual(obtained, expected);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+                
+           
            
 
         }
 
 
-       
+        [TestMethod]        
+        public void ValidateObjects_WithOverridenEqualsMethod_AreEqual()
+        {
 
-       
+
+
+            OverriddenMethodEqualsOfClass object1 = new OverriddenMethodEqualsOfClass();
+            OverriddenMethodEqualsOfClass object2 = new OverriddenMethodEqualsOfClass();
+
+            bool obtained = validator.CompareTwoObjectWithOverridenEquals(object1, object2);
+
+            Assert.AreEqual(obtained, true);
+
+
+        }
+
+
+
+
+
+
 
     }
 }

@@ -9,7 +9,25 @@ namespace EqualsAlgoritmsLibrary
     {
         public bool CompareTwoObjectWithSystemEquals(NoOverriddenEqualsMethodOfClass object1, NoOverriddenEqualsMethodOfClass object2)
         {
-            return true;
+
+            if (object1.Equals(object2))
+            {
+                return true;
+            }
+            else {
+                throw new Exception("LOL not Equals even have the same properties");
+            }
+            
         }
+
+        public bool CompareTwoObjectWithOverridenEquals(OverriddenMethodEqualsOfClass object1, OverriddenMethodEqualsOfClass object2)
+        {
+            if (object1.Equals(object2))
+            {
+                return true;
+            }
+            return false ;
+        }
+
     }
 }
