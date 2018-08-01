@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EqualsAlgoritms.UnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class EqualsWithList_Tests
     {
         [TestMethod]
         public void TestMethod1()
