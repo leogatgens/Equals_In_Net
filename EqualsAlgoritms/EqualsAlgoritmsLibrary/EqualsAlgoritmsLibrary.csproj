@@ -44,6 +44,8 @@
     <Compile Include="EqualsWithList.cs" />
     <Compile Include="EqualsWithObjects.cs" />
     <Compile Include="EqualsWithPrimitive.cs" />
+    <Compile Include="Objetos\Profesion.cs" />
+    <Compile Include="Objetos\PersonaProfesional.cs" />
     <Compile Include="OverriddenMethodEqualsOfClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NoOverriddenEqualsMethodOfClass.cs" />

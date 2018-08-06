@@ -15,9 +15,13 @@ namespace EqualsAlgoritms.UnitTest
 
         public override bool Equals(object obj)
         {
-            var @class = obj as OverriddenMethodEqualsOfClass;
-            return @class != null &&
+            return obj is OverriddenMethodEqualsOfClass @class &&
                    Name == @class.Name;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
         }
     }
 }
