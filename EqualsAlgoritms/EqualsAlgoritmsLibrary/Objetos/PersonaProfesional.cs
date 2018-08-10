@@ -49,7 +49,7 @@ namespace EqualsAlgoritmsLibrary.Objetos
         //    return this.Id == rhs.Id
         //        && this.Nombre == rhs.Nombre
         //        && this.Apellidos == rhs.Apellidos
-        //    && this.Profesiones.Except(rhs.Profesiones).Any();
+        //    && !this.Profesiones.Except(rhs.Profesiones).Any();//Compara utilizando el equals de la clase no importa el orden sequencial
 
         //}
 
