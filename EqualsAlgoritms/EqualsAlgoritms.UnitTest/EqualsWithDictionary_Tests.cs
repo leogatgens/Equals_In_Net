@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EqualsAlgoritms.UnitTest
 {
     [TestClass]
-    class EqualsWithDictionary_Tests
+    public class EqualsWithDictionary_Tests
     {
 
         private EqualsAlgoritmsLibrary.EqualsWithDictionary validator;
@@ -21,11 +21,38 @@ namespace EqualsAlgoritms.UnitTest
         }
 
         [TestMethod]
-        public void ValidaListaConObjectos_ConListaOrdenadas_SonIguales()
+        public void ValidaListaDiccionario_ConDiccionariosEquivalentes_SonIguales()
         {
 
 
-            ConfiguracionMatrizConPosValores configuracionMatriz1 = new ConfiguracionMatrizConPosValores();
+          
+            List<ConfiguracionMatrizDinamica> configuracionMatrizDinamica1 = CrearConfiguracionMatrizDinamica1();
+            ConfiguracionMatrizConPosValores MatrizConPosValores1 = new ConfiguracionMatrizConPosValores()
+            {
+                    Configuraciones = configuracionMatrizDinamica1,
+                    PosValores = new Dictionary<string, int>() { { "NP_01", -1 }, { "NP_02", -1 }, { "NP_03", -1 } }
+             };
+
+            List<ConfiguracionMatrizDinamica> configuracionMatrizDinamica2 = CrearConfiguracionMatrizDinamica2();
+            ConfiguracionMatrizConPosValores MatrizConPosValores2 = new ConfiguracionMatrizConPosValores()
+                {
+                    Configuraciones = configuracionMatrizDinamica2,
+                    PosValores = new Dictionary<string, int>() { { "NP_01", -1 }, { "NP_02", -1 }, { "NP_03", -1 } }
+                };
+
+
+
+
+
+
+            bool resultado = validator.ComparaDiccionariosConMetodoEquals(MatrizConPosValores1, MatrizConPosValores2);
+
+                Assert.AreEqual(resultado, true);
+           
+        }
+
+        private static List<ConfiguracionMatrizDinamica> CrearConfiguracionMatrizDinamica1()
+        {
             List<ConfiguracionMatrizDinamica> configuracionMatrizDinamica = new List<ConfiguracionMatrizDinamica>();
 
             ConfiguracionMatrizDinamica configuracionA = new ConfiguracionMatrizDinamica()
@@ -35,7 +62,8 @@ namespace EqualsAlgoritms.UnitTest
                 CodigoCelda = "M.1.1",
                 CodigoPregunta = "M.1",
                 IdFormulario = 10,
-                PosValorMetadata = "NP_01"
+                PosValorMetadata = "NP_01",
+                NombreColumna = "DatodePrueba"
             };
 
             ConfiguracionMatrizDinamica configuracionB = new ConfiguracionMatrizDinamica()
@@ -43,7 +71,8 @@ namespace EqualsAlgoritms.UnitTest
                 CodigoCelda = "Celda.1.2.2",
                 CodigoPregunta = "A.1.2.3",
                 IdFormulario = 1,
-                PosValorMetadata = "NP_02"
+                PosValorMetadata = "NP_02",
+                NombreColumna = "DatodePrueba"
             };
 
             ConfiguracionMatrizDinamica configuracionC = new ConfiguracionMatrizDinamica()
@@ -51,23 +80,54 @@ namespace EqualsAlgoritms.UnitTest
                 CodigoCelda = "Celda.1.2.3",
                 CodigoPregunta = "A.1.2.3",
                 IdFormulario = 1,
-                PosValorMetadata = "NP_03"
+                PosValorMetadata = "NP_03",
+                NombreColumna = "DatodePrueba"
             };
 
             configuracionMatrizDinamica.Add(configuracionA);
             configuracionMatrizDinamica.Add(configuracionB);
             configuracionMatrizDinamica.Add(configuracionC);
-
-            configuracionMatriz1.Configuraciones = configuracionMatrizDinamica;
-            configuracionMatriz1.PosValores = new Dictionary<string, int>() { { "NP_01", -1 }, { "NP_02", -1 }, { "NP_03", -1 } };
-
-
-         bool resultado =    validator.ComparaDiccionariosConMetodoEquals(configuracionMatriz1, configuracionMatriz1);
-
-            Assert.AreEqual(resultado ,true );
+            return configuracionMatrizDinamica;
         }
 
+        private static List<ConfiguracionMatrizDinamica> CrearConfiguracionMatrizDinamica2()
+        {
+            List<ConfiguracionMatrizDinamica> configuracionMatrizDinamica = new List<ConfiguracionMatrizDinamica>();
 
+            ConfiguracionMatrizDinamica configuracionA = new ConfiguracionMatrizDinamica()
+            {
+                IdEmpresaEstablecimiento = 1,
+                IdEntidadVinculada = 1,
+                CodigoCelda = "M.1.1",
+                CodigoPregunta = "M.1",
+                IdFormulario = 10,
+                PosValorMetadata = "NP_01",
+                NombreColumna = "DatodePrueba"
+            };
+
+            ConfiguracionMatrizDinamica configuracionB = new ConfiguracionMatrizDinamica()
+            {
+                CodigoCelda = "Celda.1.2.2",
+                CodigoPregunta = "A.1.2.3",
+                IdFormulario = 1,
+                PosValorMetadata = "NP_02",
+                NombreColumna = "DatodePrueba"
+            };
+
+            ConfiguracionMatrizDinamica configuracionC = new ConfiguracionMatrizDinamica()
+            {
+                CodigoCelda = "Celda.1.2.3",
+                CodigoPregunta = "A.1.2.3",
+                IdFormulario = 1,
+                PosValorMetadata = "NP_03",
+                NombreColumna = "DatodePrueba"
+            };
+
+            configuracionMatrizDinamica.Add(configuracionA);
+            configuracionMatrizDinamica.Add(configuracionB);
+            configuracionMatrizDinamica.Add(configuracionC);
+            return configuracionMatrizDinamica;
+        }
     }
 
 

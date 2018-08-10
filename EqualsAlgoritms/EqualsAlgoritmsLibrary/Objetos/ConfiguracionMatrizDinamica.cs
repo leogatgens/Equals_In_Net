@@ -20,15 +20,29 @@ namespace EqualsAlgoritmsLibrary.Objetos
 
         public override bool Equals(object objetoDeEntrada)
         {
+
+            if (objetoDeEntrada == null)
+                return false;
+            if (ReferenceEquals(objetoDeEntrada, this))
+                return true;
+            if (objetoDeEntrada.GetType() != this.GetType())
+                return false;
             ConfiguracionMatrizDinamica objetoAComparar = (ConfiguracionMatrizDinamica)objetoDeEntrada;
 
-            return IdEmpresaEstablecimiento == objetoAComparar.IdEmpresaEstablecimiento
-               & IdEntidadVinculada == objetoAComparar.IdEntidadVinculada
-               & IdFormulario == objetoAComparar.IdFormulario
-               & CodigoPregunta == objetoAComparar.CodigoPregunta
-               & CodigoCelda == objetoAComparar.CodigoCelda
-               & PosValorMetadata == objetoAComparar.PosValorMetadata
-                & NombreColumna == objetoAComparar.NombreColumna;
+            return this.IdEmpresaEstablecimiento == objetoAComparar.IdEmpresaEstablecimiento
+               & this.IdEntidadVinculada == objetoAComparar.IdEntidadVinculada
+               & this.IdFormulario == objetoAComparar.IdFormulario
+               & this.CodigoPregunta == objetoAComparar.CodigoPregunta
+               & this.CodigoCelda == objetoAComparar.CodigoCelda
+               & this.PosValorMetadata == objetoAComparar.PosValorMetadata
+                & this.NombreColumna == objetoAComparar.NombreColumna;
+        }
+
+        public override int GetHashCode()
+        {
+            return IdEmpresaEstablecimiento.GetHashCode() ^ IdEntidadVinculada.GetHashCode()
+                ^ IdFormulario.GetHashCode() ^ CodigoPregunta.GetHashCode() ^ CodigoCelda.GetHashCode() ^ PosValorMetadata.GetHashCode()
+                ^ NombreColumna.GetHashCode();
         }
     }
 

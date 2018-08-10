@@ -9,7 +9,14 @@ namespace EqualsAlgoritmsLibrary
     {
         public bool ComparaDiccionariosConMetodoEquals(ConfiguracionMatrizConPosValores configuracionMatriz1, ConfiguracionMatrizConPosValores configuracionMatriz2)
         {
-            throw new NotImplementedException();
+            if (configuracionMatriz1.Equals(configuracionMatriz2))
+            {
+                return true;
+            }else{
+
+                return false;
+            }
+
         }
     }
 }

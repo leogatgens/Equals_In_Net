@@ -16,10 +16,23 @@ namespace EqualsAlgoritmsLibrary.Objetos
         {
             ConfiguracionMatrizConPosValores objetoAComparar = (ConfiguracionMatrizConPosValores)objetoDeEntrada;
 
-            return Configuraciones.Except(objetoAComparar.Configuraciones).Any()
-               & objetoAComparar.PosValores.Count == PosValores.Count
-                & objetoAComparar.PosValores.Keys.All(llave => PosValores.ContainsKey(llave)
-                 & Object.Equals(objetoAComparar.PosValores[llave], PosValores[llave]));
+
+
+            return !this.Configuraciones.Except(objetoAComparar.Configuraciones).Any()
+            & objetoAComparar.PosValores.Count == this.PosValores.Count
+                & objetoAComparar.PosValores.Keys.All(llave => this.PosValores.ContainsKey(llave)
+                 & Object.Equals(objetoAComparar.PosValores[llave], this.PosValores[llave]));
+
+
+            //return this.Configuraciones.SequenceEqual(objetoAComparar .Configuraciones )
+            //& objetoAComparar.PosValores.Count == this.PosValores.Count
+            //    & objetoAComparar.PosValores.Keys.All(llave => this.PosValores.ContainsKey(llave)
+            //     & Object.Equals(objetoAComparar.PosValores[llave], this.PosValores[llave]));
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 
