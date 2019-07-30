@@ -17,27 +17,8 @@ namespace EqualsAlgoritmsLibrary.Objetos
 
         public List<Profesion> Profesiones { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-                return false;
-            if (ReferenceEquals(obj, this))
-                return true;
-            if (obj.GetType() != this.GetType())
-                return false;
-            PersonaProfesional rhs = obj as PersonaProfesional;
-            return this.Id == rhs.Id
-                && this.Nombre == rhs.Nombre
-                && this.Apellidos == rhs.Apellidos
-             && this.Profesiones.SequenceEqual(rhs.Profesiones); //Compara utilizando el equals de la clase pero en orden sequencial
-
-
-        }
-
         //public override bool Equals(object obj)
         //{
-
-
         //    if (obj == null)
         //        return false;
         //    if (ReferenceEquals(obj, this))
@@ -45,13 +26,32 @@ namespace EqualsAlgoritmsLibrary.Objetos
         //    if (obj.GetType() != this.GetType())
         //        return false;
         //    PersonaProfesional rhs = obj as PersonaProfesional;
-
         //    return this.Id == rhs.Id
         //        && this.Nombre == rhs.Nombre
         //        && this.Apellidos == rhs.Apellidos
-        //    && !this.Profesiones.Except(rhs.Profesiones).Any();//Compara utilizando el equals de la clase no importa el orden sequencial
+        //     && this.Profesiones.SequenceEqual(rhs.Profesiones); //Compara utilizando el equals de la clase pero en orden sequencial
+
 
         //}
+
+        public override bool Equals(object obj)
+        {
+
+
+            if (obj == null)
+                return false;
+            if (ReferenceEquals(obj, this))
+                return true;
+            if (obj.GetType() != this.GetType())
+                return false;
+            PersonaProfesional rhs = obj as PersonaProfesional;
+
+            return this.Id == rhs.Id
+                && this.Nombre == rhs.Nombre
+                && this.Apellidos == rhs.Apellidos
+            && !this.Profesiones.Except(rhs.Profesiones).Any();//Compara utilizando el equals de la clase no importa el orden sequencial el rendimiento es peor aqui
+
+        }
 
         public override int GetHashCode()
         {

@@ -1,5 +1,5 @@
-﻿using System;
-using EqualsAlgoritmsLibrary.Objetos;
+﻿using EqualsAlgoritmsLibrary.Objetos;
+using System;
 
 namespace EqualsAlgoritmsLibrary
 {
@@ -7,8 +7,11 @@ namespace EqualsAlgoritmsLibrary
     {
         public bool ComparaObjetosConMetodoEquals(PersonaProfesional personaGraduada1, PersonaProfesional personaGraduada2)
         {
-
-           var algo = object.ReferenceEquals(personaGraduada1,personaGraduada2  ); 
+            
+           var algo = object.ReferenceEquals(personaGraduada1,personaGraduada2  );
+            if (algo == true) {
+                throw new Exception();
+            }
             if (personaGraduada1.Equals(personaGraduada2)) {
                 return true;
             }

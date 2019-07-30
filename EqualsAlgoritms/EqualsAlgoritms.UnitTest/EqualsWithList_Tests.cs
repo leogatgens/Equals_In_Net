@@ -13,7 +13,7 @@ namespace EqualsAlgoritms.UnitTest
         [TestInitialize]
         public void TestInit()
         {
-            validator = new EqualsAlgoritmsLibrary.EqualsWithList ();
+            validator = new EqualsAlgoritmsLibrary.EqualsWithList();
         }
 
         [TestMethod]
@@ -110,9 +110,15 @@ namespace EqualsAlgoritms.UnitTest
             };
 
 
-
+            ///Las profesiones son las mismas que la persona 1 pero el orden es distinto
             List<Profesion> profesionesPersona2 = new List<Profesion>
-            { new Profesion
+            {
+                      new Profesion
+                {
+                    Id = 3,
+                    TituloUniversitario = "Abogado"
+                },
+                new Profesion
                 {
                     Id = 2,
                     TituloUniversitario = "Taxista"
@@ -121,12 +127,6 @@ namespace EqualsAlgoritms.UnitTest
                 {
                     Id = 1,
                     TituloUniversitario = "Sistemas"
-                },
-                   
-                    new Profesion
-                {
-                    Id = 3,
-                    TituloUniversitario = "Abogado"
                 }
 
             };
@@ -140,7 +140,7 @@ namespace EqualsAlgoritms.UnitTest
 
 
             };
-
+            ///Es la misma persona pero las profesiones estan en otro orden.
             PersonaProfesional personaGraduada2 = new PersonaProfesional
             {
                 Id = 1,
@@ -151,7 +151,7 @@ namespace EqualsAlgoritms.UnitTest
 
             };
 
-
+            ///El resultado esperado es que no sean iguales. Por el orden
             bool obtained = validator.ComparaObjetosConMetodoEquals(personaGraduada1, personaGraduada2);
             bool expected = false;
             Assert.AreEqual(obtained, expected);
